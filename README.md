@@ -4,12 +4,12 @@ A collection of original OpenSCAD designs for 3D printing. Each project is organ
 
 ## 📁 Project Index
 
-| Project Name      | Description                                      |
+|Project Name      |Description                                      |
 |-------------------|--------------------------------------------------|
-['1601_Coffee_Set'](./1601_Coffee_Set/)		|Espresso Set with Stand, Funnel and Tamper.|
-['2504_Throttle Cover'](./2504_Throttle Cover/) 	|Cover for GoodHope's throttle controllers.|
-['2505_N30_Pro_Cover'](./2505_N30_Pro_Cover/)		|Protective cover for N30 Pro controller from 8BitDo.	| 
-['StdLibraries']('/StdLibraries')					|Libraries used by individual projects.					|
+[1601_Coffee_Set](./1601_Coffee_Set/)		|Espresso Set with Stand, Funnel and Tamper.|
+[2504_Throttle_Cover](./2504_Throttle_Cover/) 	|Cover for GoodHope's throttle controllers.|
+[2505_N30_Pro_Cover](./2505_N30_Pro_Cover/)		|Protective cover for N30 Pro controller from 8BitDo.	| 
+[StdLibraries]('/StdLibraries')					|Libraries used by individual projects.					|
 
 ## 🔧 Tools Used
 
