@@ -1,0 +1,3 @@
+[submodule "0000_StdLibraries/StdLibraries/BOSL2"]
+	path = 0000_StdLibraries/StdLibraries/BOSL2
+	url = https://github.com/BelfrySCAD/BOSL2.git
