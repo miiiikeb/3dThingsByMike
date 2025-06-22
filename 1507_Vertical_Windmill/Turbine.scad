@@ -1,12 +1,12 @@
   
 
 
-//build(3);   //Uncomment to build a view of all three complete blades. This is  only useful for getting an idea of the shape. Don't try to print this :)
+build();   //Uncomment to build a view of all three complete blades. This is  only useful for getting an idea of the shape. Don't try to print this :)
 
 //rotate([0,0,-70]) segment(1); //Uncomment to generate segment 1
 //rotate([0,0,-30]) segment(2); //Uncomment to generate segment 2
 //rotate([0,0,10]) segment(3);    //Uncomment to generate segment 3
-th_mount();                //Uncomment to build the central mount for straight rod
+//th_mount();                //Uncomment to build the central mount for straight rod
 
 /****PLUG & SOCKET SETTINGS****/
 //You may need to tinker with these slightly to get a good push fit between the plug and socket pieces of the blade segments
@@ -98,7 +98,7 @@ module build(){
         }
     }
     for(i=[0:num_sockets-1]){
-        translate([0,0,end_os + i*socket_os]) build_mount(); //this needs to be rotated to suit the height
+        translate([0,0,end_os + i*socket_os]) th_mount(); //this needs to be rotated to suit the height
     }
 }
 
