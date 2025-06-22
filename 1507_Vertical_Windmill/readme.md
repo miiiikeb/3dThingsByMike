@@ -8,26 +8,20 @@ This is my second version, and it can generate a much bigger turbine regardless 
 
 At the moment, I don't have this driving anything, but the plan is to attach a small water pump (printed, of course) to lift water into a gravity feed system.
 
-### Gallery
-## 📁 Files Included
+## Gallery
+[<img src="https://github.com/miiiikeb/3dThingsByMike/raw/main/1507_Vertical_Windmill/IMG_0518.JPG" width="300"/>](https://github.com/miiiikeb/3dThingsByMike/main/1507_Vertical_Windmill/IMG_0518.JPG)
+[<img src="https://github.com/miiiikeb/3dThingsByMike/raw/main/1507_Vertical_Windmill/IMG_0508.JPG" width="300"/>](https://github.com/miiiikeb/3dThingsByMike/blob/main/1507_Vertical_Windmill/IMG_0508.JPG)
+[<img src="https://github.com/miiiikeb/3dThingsByMike/raw/main/1507_Vertical_Windmill/IMG_0510.JPG" width="300"/>](https://github.com/miiiikeb/3dThingsByMike/main/1507_Vertical_Windmill/IMG_0510.JPG)
+[<img src="https://github.com/miiiikeb/3dThingsByMike/raw/main/1507_Vertical_Windmill/IMG_0516.JPG" width="300"/>](https://github.com/miiiikeb/3dThingsByMike/main/1507_Vertical_Windmill/IMG_0516.JPG) 
+[<img src="https://github.com/miiiikeb/3dThingsByMike/raw/main/1507_Vertical_Windmill/JointTest.png" width="300"/>](https://github.com/miiiikeb/3dThingsByMike/main/1507_Vertical_Windmill/JointTest.png)
+[<img src="https://github.com/miiiikeb/3dThingsByMike/raw/main/1507_Vertical_Windmill/BearingMount02.01.png" width="300"/>](https://github.com/miiiikeb/3dThingsByMike/main/1507_Vertical_Windmill/BearingMount02.01.png)
+[<img src="https://github.com/miiiikeb/3dThingsByMike/raw/main/1507_Vertical_Windmill/mount02.00.png" width="300"/>](https://github.com/miiiikeb/3dThingsByMike/main/1507_Vertical_Windmill/mount02.00.png)
+[<img src="https://github.com/miiiikeb/3dThingsByMike/raw/main/1507_Vertical_Windmill/SegNum1-02.png" width="300"/>](https://github.com/miiiikeb/3dThingsByMike/main/1507_Vertical_Windmill/SegNum1-02.png)
+[<img src="https://github.com/miiiikeb/3dThingsByMike/raw/main/1507_Vertical_Windmill/SegNum2-02.png" width="300"/>](https://github.com/miiiikeb/3dThingsByMike/main/1507_Vertical_Windmill/SegNum2-02.png)
+[<img src="https://github.com/miiiikeb/3dThingsByMike/raw/main/1507_Vertical_Windmill/SegNum3-02.png" width="300"/>](https://github.com/miiiikeb/3dThingsByMike/main/1507_Vertical_Windmill/SegNum3-02.png)
+[<img src="https://github.com/miiiikeb/3dThingsByMike/raw/main/1507_Vertical_Windmill/ThreadedMount02.png" width="300"/>](https://github.com/miiiikeb/3dThingsByMike/main/1507_Vertical_Windmill/ThreadedMount02.png)
 
-The following images are part of the Mk2 Vertical Axis Wind Turbine (VAWT) project:
-
-| Thumbnail | File Name | Description |
-|----------|------------|-------------|
-| [<img src="https://github.com/miiiikeb/3dThingsByMike/raw/main/1506_Vertical_Windmill/IMG_0518.JPG" width="300"/>](https://github.com/miiiikeb/3dThingsByMike/blob/main/1506_Vertical_Windmill/IMG_0518.JPG) | `IMG_0518.JPG` | Additional build detail photo |
-| [<img src="https://github.com/miiiikeb/3dThingsByMike/raw/main/1506_Vertical_Windmill/IMG_0508.JPG" width="300"/>](https://github.com/miiiikeb/3dThingsByMike/blob/main/1506_Vertical_Windmill/IMG_0508.JPG) | `IMG_0508.JPG` | Photo of the assembled turbine |
-| [<img src="https://github.com/miiiikeb/3dThingsByMike/raw/main/1506_Vertical_Windmill/IMG_0510.JPG" width="300"/>](https://github.com/miiiikeb/3dThingsByMike/blob/main/1506_Vertical_Windmill/IMG_0510.JPG) | `IMG_0510.JPG` | Additional build detail photo |
-| [<img src="https://github.com/miiiikeb/3dThingsByMike/raw/main/1506_Vertical_Windmill/IMG_0516.JPG" width="300"/>](https://github.com/miiiikeb/3dThingsByMike/blob/main/1506_Vertical_Windmill/IMG_0516.JPG) | `IMG_0516.JPG` | Additional build detail photo |
-| [<img src="https://github.com/miiiikeb/3dThingsByMike/raw/main/1506_Vertical_Windmill/JointTest.png" width="300"/>](https://github.com/miiiikeb/3dThingsByMike/blob/main/1506_Vertical_Windmill/JointTest.png) | `JointTest.png` | Tolerance test part preview |
-| [<img src="https://github.com/miiiikeb/3dThingsByMike/raw/main/1506_Vertical_Windmill/BearingMount02.01.png" width="300"/>](https://github.com/miiiikeb/3dThingsByMike/blob/main/1506_Vertical_Windmill/BearingMount02.01.png) | `BearingMount02.01.png` | Updated bearing mount rendering |
-| [<img src="https://github.com/miiiikeb/3dThingsByMike/raw/main/1506_Vertical_Windmill/mount02.00.png" width="300"/>](https://github.com/miiiikeb/3dThingsByMike/blob/main/1506_Vertical_Windmill/mount02.00.png) | `mount02.00.png` | Mount diagram or render |
-| [<img src="https://github.com/miiiikeb/3dThingsByMike/raw/main/1506_Vertical_Windmill/SegNum1-02.png" width="300"/>](https://github.com/miiiikeb/3dThingsByMike/blob/main/1506_Vertical_Windmill/SegNum1-02.png) | `SegNum1-02.png` | Blade segment 1 |
-| [<img src="https://github.com/miiiikeb/3dThingsByMike/raw/main/1506_Vertical_Windmill/SegNum2-02.png" width="300"/>](https://github.com/miiiikeb/3dThingsByMike/blob/main/1506_Vertical_Windmill/SegNum2-02.png) | `SegNum2-02.png` | Blade segment 2 |
-| [<img src="https://github.com/miiiikeb/3dThingsByMike/raw/main/1506_Vertical_Windmill/SegNum3-02.png" width="300"/>](https://github.com/miiiikeb/3dThingsByMike/blob/main/1506_Vertical_Windmill/SegNum3-02.png) | `SegNum3-02.png` | Blade segment 3 |
-| [<img src="https://github.com/miiiikeb/3dThingsByMike/raw/main/1506_Vertical_Windmill/ThreadedMount02.png" width="300"/>](https://github.com/miiiikeb/3dThingsByMike/blob/main/1506_Vertical_Windmill/ThreadedMount02.png) | `ThreadedMount02.png` | Threaded shaft mount for M8 rod |
-
-### Updates
+## Updates
 
 - **Update 1**: I've added a couple of different blade sizes to suit different build volumes. If you're after something different, have a play with the SCAD file, or if that's not your thing, let me know and I can generate some.
 - **Update 2**: Well, it's been up for a while now, and I've got a better idea of how it behaves in different winds. It takes a fair bit to get it going, and unless it's really blowing, it doesn't spin too fast. I think the idea of driving something with it was probably a bit hopeful, but as a sculpture, I still quite like it. The next version will probably have a few more blades and a bigger diameter. All this takes is a few different settings in the SCAD file, but I haven't gotten around to it yet.
