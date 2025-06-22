@@ -11,10 +11,7 @@ At the moment, I don't have this driving anything, but the plan is to attach a s
 ### Gallery
 ## 📁 Files Included
 
-The following images are part of the Mk2 Vertical Axis Wind Turbine (VAWT) project:
-[<img src="https://github.com/miiiikeb/3dThingsByMike/raw/main/2505_N30_Pro_Cover/N30ProCover01.jpg" width="300"/>](https://github.com/miiiikeb/3dThingsByMike/blob/main/2505_N30_Pro_Cover/N30ProCover01.jpg)
-| Thumbnail | File Name | Description |
-|----------|------------|-------------|
+
 [<img src="https://github.com/miiiikeb/3dThingsByMike/raw/main/1507_Vertical_Windmill/IMG_0518.JPG" width="300"/>](https://github.com/miiiikeb/3dThingsByMike/main/1507_Vertical_Windmill/IMG_0518.JPG)
 [<img src="https://github.com/miiiikeb/3dThingsByMike/raw/main/1507_Vertical_Windmill/IMG_0508.JPG" width="300"/>](https://github.com/miiiikeb/3dThingsByMike/blob/main/1507_Vertical_Windmill/IMG_0508.JPG)
 [<img src="https://github.com/miiiikeb/3dThingsByMike/raw/main/1507_Vertical_Windmill/IMG_0510.JPG" width="300"/>](https://github.com/miiiikeb/3dThingsByMike/main/1507_Vertical_Windmill/IMG_0510.JPG)
