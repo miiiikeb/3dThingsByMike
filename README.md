@@ -12,6 +12,7 @@ A collection of original OpenSCAD designs for 3D printing. Each project is organ
 | [2207_GH_Blind_Hose_Clamp](./2207_GH_Blind_Hose_Clamp/)| Wastewater hose-clamp for GoodHope.                   |
 | [2003_Windy](./2003_Windy/)                          | Wind indicator for a dinghy using 4mm rod and pivoted parts. |
 | [1601_Coffee_Set](./1601_Coffee_Set/)                | Espresso Set with Stand, Funnel and Tamper.            |
+| [1507_Vertical_Windmill](./1507_Vertical_Windmill/)          | Vertical Windmill (Kinetic Scuplture more than functional).   |
 | [StdLibraries](./StdLibraries)                      | Libraries used by individual projects.                 |
 
 ## 🔧 Tools Used
