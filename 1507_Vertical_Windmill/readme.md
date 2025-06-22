@@ -12,20 +12,20 @@ At the moment, I don't have this driving anything, but the plan is to attach a s
 ## 📁 Files Included
 
 The following images are part of the Mk2 Vertical Axis Wind Turbine (VAWT) project:
-
+[<img src="https://github.com/miiiikeb/3dThingsByMike/raw/main/2505_N30_Pro_Cover/N30ProCover01.jpg" width="300"/>](https://github.com/miiiikeb/3dThingsByMike/blob/main/2505_N30_Pro_Cover/N30ProCover01.jpg)
 | Thumbnail | File Name | Description |
 |----------|------------|-------------|
-| [<img src="https://github.com/miiiikeb/3dThingsByMike/raw/main/1506_Vertical_Windmill/IMG_0518.JPG" width="300"/>](https://github.com/miiiikeb/3dThingsByMike/main/1506_Vertical_Windmill/IMG_0518.JPG) | `IMG_0518.JPG` | Additional build detail photo |
-| [<img src="https://github.com/miiiikeb/3dThingsByMike/raw/main/1506_Vertical_Windmill/IMG_0508.JPG" width="300"/>](https://github.com/miiiikeb/3dThingsByMike/main/1506_Vertical_Windmill/IMG_0508.JPG) | `IMG_0508.JPG` | Photo of the assembled turbine |
-| [<img src="https://github.com/miiiikeb/3dThingsByMike/raw/main/1506_Vertical_Windmill/IMG_0510.JPG" width="300"/>](https://github.com/miiiikeb/3dThingsByMike/main/1506_Vertical_Windmill/IMG_0510.JPG) | `IMG_0510.JPG` | Additional build detail photo |
-| [<img src="https://github.com/miiiikeb/3dThingsByMike/raw/main/1506_Vertical_Windmill/IMG_0516.JPG" width="300"/>](https://github.com/miiiikeb/3dThingsByMike/main/1506_Vertical_Windmill/IMG_0516.JPG) | `IMG_0516.JPG` | Additional build detail photo |
-| [<img src="https://github.com/miiiikeb/3dThingsByMike/raw/main/1506_Vertical_Windmill/JointTest.png" width="300"/>](https://github.com/miiiikeb/3dThingsByMike/main/1506_Vertical_Windmill/JointTest.png) | `JointTest.png` | Tolerance test part preview |
-| [<img src="https://github.com/miiiikeb/3dThingsByMike/raw/main/1506_Vertical_Windmill/BearingMount02.01.png" width="300"/>](https://github.com/miiiikeb/3dThingsByMike/main/1506_Vertical_Windmill/BearingMount02.01.png) | `BearingMount02.01.png` | Updated bearing mount rendering |
-| [<img src="https://github.com/miiiikeb/3dThingsByMike/raw/main/1506_Vertical_Windmill/mount02.00.png" width="300"/>](https://github.com/miiiikeb/3dThingsByMike/main/1506_Vertical_Windmill/mount02.00.png) | `mount02.00.png` | Mount diagram or render |
-| [<img src="https://github.com/miiiikeb/3dThingsByMike/raw/main/1506_Vertical_Windmill/SegNum1-02.png" width="300"/>](https://github.com/miiiikeb/3dThingsByMike/main/1506_Vertical_Windmill/SegNum1-02.png) | `SegNum1-02.png` | Blade segment 1 |
-| [<img src="https://github.com/miiiikeb/3dThingsByMike/raw/main/1506_Vertical_Windmill/SegNum2-02.png" width="300"/>](https://github.com/miiiikeb/3dThingsByMike/main/1506_Vertical_Windmill/SegNum2-02.png) | `SegNum2-02.png` | Blade segment 2 |
-| [<img src="https://github.com/miiiikeb/3dThingsByMike/raw/main/1506_Vertical_Windmill/SegNum3-02.png" width="300"/>](https://github.com/miiiikeb/3dThingsByMike/main/1506_Vertical_Windmill/SegNum3-02.png) | `SegNum3-02.png` | Blade segment 3 |
-| [<img src="https://github.com/miiiikeb/3dThingsByMike/raw/main/1506_Vertical_Windmill/ThreadedMount02.png" width="300"/>](https://github.com/miiiikeb/3dThingsByMike/main/1506_Vertical_Windmill/ThreadedMount02.png) | `ThreadedMount02.png` | Threaded shaft mount for M8 rod |
+[<img src="https://github.com/miiiikeb/3dThingsByMike/raw/main/1507_Vertical_Windmill/IMG_0518.JPG" width="300"/>](https://github.com/miiiikeb/3dThingsByMike/main/1507_Vertical_Windmill/IMG_0518.JPG)
+[<img src="https://github.com/miiiikeb/3dThingsByMike/raw/main/1507_Vertical_Windmill/IMG_0508.JPG" width="300"/>](https://github.com/miiiikeb/3dThingsByMike/blob/main/1507_Vertical_Windmill/IMG_0508.JPG)
+[<img src="https://github.com/miiiikeb/3dThingsByMike/raw/main/1507_Vertical_Windmill/IMG_0510.JPG" width="300"/>](https://github.com/miiiikeb/3dThingsByMike/main/1507_Vertical_Windmill/IMG_0510.JPG)
+[<img src="https://github.com/miiiikeb/3dThingsByMike/raw/main/1507_Vertical_Windmill/IMG_0516.JPG" width="300"/>](https://github.com/miiiikeb/3dThingsByMike/main/1507_Vertical_Windmill/IMG_0516.JPG) 
+[<img src="https://github.com/miiiikeb/3dThingsByMike/raw/main/1507_Vertical_Windmill/JointTest.png" width="300"/>](https://github.com/miiiikeb/3dThingsByMike/main/1507_Vertical_Windmill/JointTest.png)
+[<img src="https://github.com/miiiikeb/3dThingsByMike/raw/main/1507_Vertical_Windmill/BearingMount02.01.png" width="300"/>](https://github.com/miiiikeb/3dThingsByMike/main/1507_Vertical_Windmill/BearingMount02.01.png)
+[<img src="https://github.com/miiiikeb/3dThingsByMike/raw/main/1507_Vertical_Windmill/mount02.00.png" width="300"/>](https://github.com/miiiikeb/3dThingsByMike/main/1507_Vertical_Windmill/mount02.00.png)
+[<img src="https://github.com/miiiikeb/3dThingsByMike/raw/main/1507_Vertical_Windmill/SegNum1-02.png" width="300"/>](https://github.com/miiiikeb/3dThingsByMike/main/1507_Vertical_Windmill/SegNum1-02.png)
+[<img src="https://github.com/miiiikeb/3dThingsByMike/raw/main/1507_Vertical_Windmill/SegNum2-02.png" width="300"/>](https://github.com/miiiikeb/3dThingsByMike/main/1507_Vertical_Windmill/SegNum2-02.png)
+[<img src="https://github.com/miiiikeb/3dThingsByMike/raw/main/1507_Vertical_Windmill/SegNum3-02.png" width="300"/>](https://github.com/miiiikeb/3dThingsByMike/main/1507_Vertical_Windmill/SegNum3-02.png)
+[<img src="https://github.com/miiiikeb/3dThingsByMike/raw/main/1507_Vertical_Windmill/ThreadedMount02.png" width="300"/>](https://github.com/miiiikeb/3dThingsByMike/main/1507_Vertical_Windmill/ThreadedMount02.png)
 
 ### Updates
 
