@@ -1,7 +1,11 @@
 # B700 Throttle Cover – 3D Printed
 A weather-proof cover for the Seastar / Dometic B700 Twin Lever Marine Throttle Control. 
-
-[<img src="https://github.com/miiiikeb/3dThingsByMike/raw/main/2504_Throttle_Cover/20250602_112811.jpg" width="300"/>](https://github.com/miiiikeb/3dThingsByMike/raw/main/2504_Throttle_Cover/20250602_112811.jpg)
+[<img src="https://github.com/miiiikeb/3dThingsByMike/raw/main/2504_Throttle_Cover/ThrottleCover#1.jpg" width="300"/>](https://github.com/miiiikeb/3dThingsByMike/raw/main/2504_Throttle_Cover/ThrottleCover#1.jpg)
+[<img src="https://github.com/miiiikeb/3dThingsByMike/raw/main/2504_Throttle_Cover/ThrottleCover#2.jpg" width="300"/>](https://github.com/miiiikeb/3dThingsByMike/raw/main/2504_Throttle_Cover/ThrottleCover#2.jpg)
+[<img src="https://github.com/miiiikeb/3dThingsByMike/raw/main/2504_Throttle_Cover/ThrottleCover#3.jpg" width="300"/>](https://github.com/miiiikeb/3dThingsByMike/raw/main/2504_Throttle_Cover/ThrottleCover#3.jpg)
+[<img src="https://github.com/miiiikeb/3dThingsByMike/raw/main/2504_Throttle_Cover/CutImage.png" width="300"/>](https://github.com/miiiikeb/3dThingsByMike/raw/main/2504_Throttle_Cover/CutImage.png)
+[<img src="https://github.com/miiiikeb/3dThingsByMike/raw/main/2504_Throttle_Cover/ConnectorConfig.png" width="300"/>](https://github.com/miiiikeb/3dThingsByMike/raw/main/2504_Throttle_Cover/ConnectorConfig.png)
+[<img src="https://github.com/miiiikeb/3dThingsByMike/raw/main/2504_Throttle_Cover/CutConfig.png" width="300"/>](https://github.com/miiiikeb/3dThingsByMike/raw/main/2504_Throttle_Cover/CutConfig.png)
 
 ## Features
 
