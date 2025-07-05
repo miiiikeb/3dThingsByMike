@@ -24,9 +24,10 @@ Include these subheadings:
 - **Material**: [PLA, PETG, etc.]  
 - **Layer height**: [e.g., 0.15 mm]  
 - **Infill**: [e.g., 20%]  
+- **Perimeters**: [e.g., 2]
 - **Supports**: [None/Yes + notes]  
-- **Build plate adhesion**: [e.g., Brim optional]  
-- **Orientation**: [e.g., Print flat, hinge up]
+- **Brim**: [e.g., 5mm or None]  
+- **Orientation**: [e.g., Print flat, hinge up, as shown]
 
 **5. Assembly Instructions**  
 List the steps to prepare the part post-print, including magnet insertion or hinge loosening. Example:
