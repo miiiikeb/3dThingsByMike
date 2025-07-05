@@ -1,6 +1,6 @@
 include<mbLib.scad>;
 
-res = 2;
+res = 1;
 
 radPos1 = [13.5,15,15,14];
 hPos1 = [0,1.5,4,5,5];
