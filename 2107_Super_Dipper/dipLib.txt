@@ -1,0 +1,232 @@
+//uses the 'single_head_pos' function to build a multiple head positive
+module head_pos(count=1){
+    hull(){
+        single_head_pos(socket=false,flange=false);
+        translate([(count-1) * headOS,0,0]) single_head_pos(socket=false,flange=false);
+    }
+    hull(){
+        single_head_pos(socket=false,body=false);
+        translate([(count-1) * headOS,0,0]) single_head_pos(socket=false,body=false);
+    }
+    for (i=[0:count-1]){
+        translate([i * headOS,0,0]) single_head_pos(flange=false,body=false);
+    }
+}
+
+module nut(nut_dia, nut_height = 20){ // set nut_dia to actual nut dim + 0.5mm
+
+    translate ([0,0,nut_height/2]) for(j=[0,120,240]){     //NUT
+                    rotate([0,0,j]) cube(size = [nut_dia,nut_dia*tan(30),nut_height],center=true);
+    }
+}
+
+module single_head_pos(flange=true,socket=true,body=true){
+    
+    if (flange==true){
+        //Lip
+		cylinder(r = lipR + mouthR, h = lipZ, $fn = res * 180);	
+	}
+
+    //separator for multi
+    if (socket==true){
+    //Lid Socket (screw-bodies)
+    	for (a = [30,90,150,210,270,330]){
+            rotate([0,0,a]) hull(){
+                translate([socXYOS,0,0]) cylinder(r = socR, h = socZ, $fn = res * 90);
+                cylinder(r = soc_hullR, h = socZ, $fn = res * 30);
+            }
+        }
+
+	}   
+
+    if (body == true){
+		//Mouth (wide body/straight cylinder)
+		cylinder(r = mouthR, h = mouthZ, $fn = res * 180);
+		
+		//Expansion (taper. mostly covered by smoothing)
+		translate([0,0,mouthZ]) cylinder(r1 = mouthR, r2 = socketR_ext, h = expZ+ ridgeR, $fn = res * 180);
+		
+		//Pipe (pipe socket (mostly covered by smoothing)
+		translate([0,0,expZ + mouthZ]) cylinder(r = socketR_ext, h = pipeZ, $fn = res * 180);
+    }
+
+}
+
+module head_neg(count=1){
+    
+    hull(){
+        for (i = [0,count-1]){
+            translate([i * headOS,0,0]){
+                //Mouth 
+                translate([0,0,-lil]) cylinder(r = mouthR - skin, h = mouthZ + lil, $fn = res * 180);
+                //Expansion + overhang of pipe
+                translate([0,0,mouthZ]) cylinder(r1 = mouthR - skin, r2 = 2.5, h = expZ + ridgeR, $fn = res * 180);
+            }
+        }
+    }
+    
+    for (i=[0:count-1]){
+	    translate([i * headOS,0,0]){
+			//Mouth 
+			//translate([0,0,-lil]) cylinder(r = mouthR - skin, h = mouthZ + lil, $fn = res * 180);
+			//Expansion + overhang of pipe
+			//translate([0,0,mouthZ]) cylinder(r1 = mouthR - skin, r2 = socketR_ext - skin - ridgeR, h = expZ + ridgeR, $fn = res * 180);
+			//Pipe collar
+			translate([0,0,0]) cylinder(r = socketR_ext - skin - ridgeR, h = expZ + mouthZ + ridgeR + ridgeZ, $fn = res * 180);
+			//Pipe
+			translate([0,0,expZ + mouthZ + ridgeR + ridgeZ]) cylinder(r = socketR_ext - skin, h = pipeZ - ridgeZ, $fn = res * 180);
+			//Lid Socket
+			
+
+			for (a = [30,90,150,210,270,330]){
+				rotate([0,0,a]) translate([socXYOS,0,0]) {
+					cylinder(r = soc_coreR, h = socZ, $fn = res * 90);
+					translate([0,0,socZ - nutZ+lil]) nut(nut_dia, nutZ);
+				}
+			}
+		}
+	}
+}
+
+
+module flangeScrews(){
+    function yScrew(holeNum,totHoles) = mouthR + flangeR/2 - (holeNum/totHoles)*(mouthR-socketR_ext);
+    function zScrew(holeNum,totHoles) = mouthZ + (holeNum/totHoles)*(expZ + pipeZ);
+
+    screwDims = [3, 2 * flangeX-2, 6, 2];
+
+    screw(dims = screwDims,rot = [0,90,0], os = [-flangeX+lil,mouthR + flangeR/2,20]);
+    nut(nut_dia=flangeNutD, nut_height = flangeNutH, rot = [0,-90,0], os = [-(flangeX-flangeNutH)+lil,(mouthR + flangeR/2),20]);
+    screw(dims = screwDims,rot = [0,-90,0], os = [flangeX+lil,-(mouthR + flangeR/2),20]);
+    nut(nut_dia=flangeNutD, nut_height = flangeNutH, rot = [0,90,0], os = [(flangeX-flangeNutH)+lil,-(mouthR + flangeR/2),20]);
+    for (i = [0:flangeHoles]){
+        screw(dims = screwDims,rot = [0,90,0], os = [-flangeX+lil,yScrew(i,flangeHoles),zScrew(i,flangeHoles)]); 
+        nut(nut_dia=flangeNutD, nut_height = flangeNutH, rot = [0,-90,0], os = [-(flangeX-flangeNutH)+lil,yScrew(i,flangeHoles),zScrew(i,flangeHoles)]); 
+        screw(dims = screwDims,rot = [0,-90,0], os = [flangeX+lil,-yScrew(i,flangeHoles),zScrew(i,flangeHoles)]);
+        nut(nut_dia=flangeNutD, nut_height = flangeNutH, rot = [0,90,0], os = [(flangeX-flangeNutH)+lil,-yScrew(i,flangeHoles),zScrew(i,flangeHoles)]); 
+    }
+}
+
+
+module build_it(count=1,cut_left=false,cut_right=false){
+    difference(){
+        union(){
+            if (build == 1){
+                difference(){
+                    head_pos(count);
+                    head_neg(count);
+                }
+            }
+            else if (build == 2){
+                difference(){
+                    lid_pos(count);
+                    lid_neg(count);
+                }
+            }
+            else if (build == 3){
+                difference(){
+                    collar_pos(count);
+                    collar_neg(count);
+                }
+            }
+        }
+        union(){
+            if (cut_left==true){
+                qCube(dims = [big,big,big], os = [-big/2+headOS/2,0,0]);
+                
+            }
+            if (cut_right==true){
+                qCube(dims = [big,big,big], os = [big/2+headOS * (count - 1.5),0,0]);
+                
+            }
+        }
+    }
+    if (cut_left==true){
+        difference(){
+            minkowski(){
+                translate([headOS/2,0,0]) intersection(){
+                    hull() single_head_pos(socket=false,flange=false);
+                    qCube(dims = [lil,big,big], os = [lil/2,0,0]);
+                }
+                scale([flangeX,1,1]) minkShape(type=5,bevel = flangeR,res = res);
+            }
+            translate([headOS/2,0,0]) flangeScrews();
+            head_neg(count);
+        }        
+    }
+    if (cut_right==true){
+        difference(){
+            minkowski(){
+                translate([(count - 1.5) * headOS - flangeX,0,0]) intersection(){
+                    hull() single_head_pos(socket=false,flange=false);
+                    qCube(dims = [lil,big,big], os = [lil/2,0,0]);
+                }
+                scale([flangeX,1,1]) minkShape(type=5,bevel = flangeR,res = res);
+            }
+            #translate([headOS * (count - 1.5)-0.1,0,0]) flangeScrews();
+            head_neg(count);
+        }        
+    }
+
+}
+
+
+module lid_pos(){
+    //Lip
+    cylinder(r = lipR + mouthR, h = lipZ, $fn = res * 180);
+   
+    //Lid Socket
+    for (a = [0:90:270]){
+        rotate([0,0,a]) hull(){
+            translate([socXYOS,0,0]) cylinder(r = socR, h = lipZ, $fn = res * 90);
+            cylinder(r = soc_hullR, h = lipZ, $fn = res * 30);
+        }
+    }
+}
+
+module lid_neg(){
+    //ScrewHoles
+    for (a = [30,90,150,210,270,330]){
+        rotate([0,0,a]) translate([socXYOS,0,0]) {
+            cylinder(r = soc_coreR, h = socZ, $fn = res * 90);
+        }
+    }
+}
+  
+
+
+module collar_pos(){
+    //Lip
+    cylinder(r = lipR + mouthR, h = lipZ, $fn = res * 180);
+   
+    //Lid Socket
+    for (a = [30,90,150,210,270,330]){
+        rotate([0,0,a]) hull(){
+            translate([socXYOS,0,0]) cylinder(r = socR, h = lipZ, $fn = res * 90);
+            cylinder(r = soc_hullR, h = lipZ, $fn = res * 30);
+        }
+    }
+}
+
+module collar_neg(){
+    //Mouth 
+    translate([0,0,-lil]) cylinder(r = mouthR - skin, h = mouthZ + lil, $fn = res * 180);
+    //ScrewHoles
+    for (a = [30,90,150,210,270,330]){
+        rotate([0,0,a]) translate([socXYOS,0,0]) {
+            cylinder(r = soc_coreR, h = socZ, $fn = res * 90);
+        }
+    }
+}
+  
+
+
+
+module chamfer(start,z){
+    hull() intersection(){
+        single_head_pos();
+        translate([0,0,start]) cylinder(r = big, h = z);
+    }
+}
+
+

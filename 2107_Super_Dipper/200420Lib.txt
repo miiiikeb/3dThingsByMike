@@ -1,0 +1,200 @@
+
+//two stacked cylinders to form a screw blockout
+module screw(dims, type = "nil",os = [0,0,0], rot = [0,0,0], res = 0.25,showDoc=false){
+    if (showDoc == true){
+        echo("
+        \nscrew(dims = [shaft diameter, shaft length, head diameter, head length],type = Not Used, res = 0.25,showDoc=false)\n");
+    }
+
+    else if (showDoc == false){
+        translate(os) rotate(rot) {
+            cylinder(d = dims[0], h = dims[1], $fn = 10 * dims[2] * res);
+            translate([0,0,dims[1]]) cylinder(d = dims[2], h = dims[3], $fn = 10 * dims[2] * res);
+        }
+    }
+}
+
+module nut(nut_dia, nut_height = 20,os = [0,0,0], rot = [0,0,0]){ // set nut_dia to actual nut dim + 0.5mm
+
+    translate(os) rotate(rot) {
+		translate ([0,0,nut_height/2]) for(j=[0,120,240]){     //NUT
+            rotate([0,0,j]) cube(size = [nut_dia,nut_dia*tan(30),nut_height],center=true);
+		}
+    }
+}
+
+// Build a base with bevelled edges
+module base(dims,bevel=1,mink = false){
+    //dims: [x,y,z]
+	//bevel: bevel dimension or minkR size.
+	//mink: false for bevel, true for mink
+    
+    dimsBev = dims - [bevel * 2,bevel * 2,bevel];
+    
+    minkowski(){
+        translate([0,0,dimsBev[2]/2]) cube(size = dimsBev, center = true);
+        if (mink == false){
+            scale([0.707,0.707,0.707]) rotate([0,0,45]) hull(){
+                cube(size = [bevel * 2, bevel * 2, 0.0001], center = true);
+                translate([0,0,bevel]) cube(size = 0.0001, center = true);
+            }
+        }
+        else if (mink == true){
+            difference(){
+                sphere(r = bevel, $fn = 60);
+                translate([0,0,-500]) cube(size = 1000, center = true);
+            }
+        }
+    }
+}
+
+module qCube(dims = [10,10,10], os = [0,0,0], rot = [0,0,0], showDoc = false){
+    //build a cube centered on the Z-axis with it's base on the X/Y plane
+    if (showDoc == true){
+		echo("\nqCube(dims = [10,10,10], os = [0,0,0], rot = [0,0,0], showDoc = false)\n");
+	}
+	else if (showDoc == false){
+        translate(os) rotate(rot) translate([0,0,dims[2]/2]) cube(size = dims, center = true);
+	}
+}
+
+// Quick Cylinder
+module qCyl(rad=1,hei=1,res=0.25,os=[0,0,0],rot=[0,0,0],showDoc = false){
+    if (showDoc == true){
+        echo("
+        \nqCyl(rad=1,hei=1,res=0.25,os=[0,0,0],rot=[0,0,0],showDoc = false)\n");
+    }
+    else if (showDoc == false){
+        translate(os) rotate(rot) cylinder(r = rad, h = hei, $fn = 10 * rad * res);
+    }
+}
+
+// Quick Cone
+module qCone(rad1=1,rad2=1,hei=1,res=0.25,os=[0,0,0],rot=[0,0,0],showDoc = false){
+    if (showDoc == true){
+        echo("
+        \nqCone(rad1=1,rad2=1,hei=1,res=0.25,os=[0,0,0],rot=[0,0,0],showDoc = false)\n");
+    }
+    else if (showDoc == false){
+		if (res <= 1){
+			faces = 10 * max([rad1,rad2]) * res;
+			translate(os) rotate(rot) cylinder(r1 = rad1, r2 = rad2, h = hei, $fn = faces);
+		}
+		else{
+			faces = res;
+			translate(os) rotate(rot) cylinder(r1 = rad1, r2 = rad2, h = hei, $fn = faces);
+		}
+    }
+}
+
+// Quick Sphere
+module qSphere(rad=1,res=0.25,os=[0,0,0],showDoc = false){
+    if (showDoc == true){
+        echo("
+        \nqSphere(rad=1,res=0.25,os=[0,0,0],showDoc = false)\n");
+    }
+    else if (showDoc == false){
+        translate(os) sphere(r = rad, $fn = 10 * rad * res);
+    }
+}
+
+module minkShape(bevel=1,type=0,res=0.25,showDoc = false){
+	
+	if (showDoc == true){
+		echo(
+			"\nminkShape(bevel=1,type=0,res=0.25,showDoc = false)\n
+			\n***minkShape TYPE List*** \n
+            0: pyramid (scaled and with 45deg rotation)\n
+            1: vertical cone\n
+            2: back-to-back horizontal cones\n
+            3: hemisphere\n
+            4: sphere\n
+			5: half cylinder.\n
+			6: vertical cylinder.\n");
+		
+	}
+    if (showDoc == false){
+		if (type == 0){
+			scale([0.707,0.707,0.707]) rotate([0,0,45]) hull(){
+					cube(size = [bevel * 2, bevel * 2, 0.0001], center = true);
+					translate([0,0,bevel]) cube(size = 0.0001, center = true);
+			}
+		}
+		   
+		else if (type == 1){
+			cylinder(r1 = bevel, r2 = 0.0001, h = bevel,$fn = res * 32);
+		}
+		else if (type == 2){
+			difference(){
+				rotate([90,0,0]) union(){
+					cylinder(r1 = bevel, r2 = 0.0001, h = bevel, $fn = res * 32);
+					mirror ([0,0,1]) cylinder(r1 = bevel, r2 = 0.0001, h = bevel,$fn = res * 32);
+				}
+				translate([0,0,-10000/2]) cube(size = 10000, center = true);
+			}
+		}
+		else if (type == 3){
+			difference(){
+					sphere(r = bevel, $fn = res * 32);
+					translate([0,0,-500]) cube(size = 1000, center = true);
+			}
+		}
+		else if (type == 4){
+			sphere(r = bevel, $fn = res * 32);
+		}
+		else if (type == 5){
+			difference(){
+			    rotate([0,90,0]) cylinder(r = bevel, $fn = bevel * 64 * res);
+				translate([0,0,-500]) cube(size = 1000, center = true);
+		    }
+		}
+		else if (type == 6){
+			cylinder(r = bevel, h = bevel,$fn = res * 32);
+		}
+	}
+	
+
+}
+
+module base(count){
+    
+    module basePos(count=1,skin = 0){
+        hull(){
+            for (i = [0,count-1]){
+                qCyl(rad = pipeDia/2 + skin, hei = baseZ, os = [i * headOS,0,0],res = res);
+                qSphere(rad = pipeDia/2 + skin,os = [i * headOS,0,0], res = res);
+            }
+        }
+    }
+    module baseNeg(count=1){
+        for (i = [0:count-1]){
+            qCyl(rad = pipeDia/2, hei = baseZ, os = [i * headOS,0,0],res = res);
+        }
+        hull(){
+            for (i = [0,count-1]){
+                translate([i * headOS,0,0]) rotate([45,0,0]) cube(size = pipeDia/2, center = true);
+            }
+        }
+    }
+    rotate([180,0,0]) difference(){
+        basePos(count = count, skin = baseSkin);
+        baseNeg(count = count);
+    }
+    
+}
+
+module minkCube(dims=[10,10,10],bevel=1,type=0,res=0.25){
+    // 'type' list
+    // 0: pyramid (scaled and with 45deg rotation)
+    // 1: vertical cone
+    // 2: 2 x horizontal cone
+    // 3: hemisphere
+    // 4: sphere
+	function dimShrink(dims,shrink = 1) = dims - [2*shrink,2*shrink,shrink];
+	minkowski(){
+		qCube(dims = dimShrink(dims,bevel));
+		minkShape(bevel,type,res);
+	}
+
+}
+

@@ -1,0 +1,75 @@
+//build = 1; //1: head, 2: lid, 3: collar
+pipeDia = 20.05; // Diameter of the insert pipe (Black Retic use 21.5)
+
+
+
+
+//(semi)Fixed Paramters
+//socketR_ext = pipeDia /2 + 2; //This needs to be 'skin' thicker than the acutal pipe radius (I did the model to the outside of the socket, not the inside!)
+//lipR = 10;
+//mouthR = 40;
+//pipeZ = 30;
+//mouthZ = 50;
+//lipZ = 5;
+//expZ = mouthR - socketR_ext + 10;
+
+//ridgeR = 2;
+//ridgeZ = 3;
+
+skin = 2;
+lil = 0.0001;
+big = 1000;
+
+//Socket
+//socR = 6;
+//soc_coreR = 2.5;
+socZ = 15; //Depth of pipe socktet (how much pipe goes in)
+stopZ = 2; //Depth of blocker cone to stop pipe
+stopRdelta = 2; //Change in radius for the blocker cone
+stopStraightZ = 2; //Vertical cylinder above the blocker
+
+//Tub
+drainZ = 10; //depth of the drain
+tubZ = 80; //additional depth of the tub (beyond the drain)
+bottomTaperZ = 15;
+topTaperZ = 10;
+topTaperR = 5;
+lipZ = 2; //Vertical lip at the top of the tub
+//socXYOS = mouthR + 2 + soc_coreR;
+//soc_hullR = 30; //internal cylinder that bulks out the coupling (not printed itself)
+
+//Flange - profile is a hull of these two
+flangeDims1 = [12,10,lil];
+flangeDims2 = [lil,14,lil];
+
+bottomBlockDims1 = [12,big,18];
+bottomBlockDims2 = [1,big,24];
+
+//Nut Dims
+//nut_dia = 8;
+//nutZ = 5;
+
+//Chamfer 
+//chamZ = mouthZ;
+//chamLen = expZ;
+
+//Multihead Parameters
+//numHeads = 3;
+headOS = 40;
+//flangeX = 5;
+//flangeR = 10;
+//flangeHoles = 2;
+flangeNutH = 20;
+flangeNutD = 5.5;
+bottomScrewZ = 8;
+topScrewZ = -13;
+sideScrewCount = 3;
+cutRowsX = [0]; //Add extra values here for multiple flanges (code isn't quite finished).
+cutRowsY = [0]; //Add extra values here for multiple flanges (code isn't quite finished).
+baseScrewZ = 6;
+screwDims = [3, 5, 6, 20]; //*****UPDATE THE '15' TO THE ACTUAL SCREW-SHAFT-LENGTH*****
+screwDimsLong = [3, 20, 6, 20]; //*****UPDATE THE '15' TO THE ACTUAL SCREW-SHAFT-LENGTH*****
+
+
+//Summaries
+totalZ = socZ + stopZ + stopStraightZ + drainZ + tubZ;
