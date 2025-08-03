@@ -1,12 +1,12 @@
 use <../0000_StdLibraries/BOSL2/std.scad>
-use <../0000_StdLibraries/Gridfinity/gridfinity_cup_modules.scad>
+use <../0000_StdLibraries/Gridfinity/jamie/gridfinity_cup_modules.scad>
 
 // X dimension in grid units
 width = 1; // [ 0.5, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13 ]
 // Y dimension in grid units
 depth = 1; // [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13 ]
 // Z dimension (multiples of 7mm)
-height = 3;
+height = 9;
 // (Zack's design uses magnet diameter of 6.5)
 magnet_diameter = 0;  // .1
 // (Zack's design uses depth of 6)
@@ -18,7 +18,7 @@ box_corner_attachments_only = false;
 // Fill in solid block (overrides all following options)
 filled_in = false;
 // X dimension subdivisions
-chambers = 3;
+chambers = 1;
 // Include overhang for labeling (and specify left/right/center justification)
 withLabel = "disabled"; // ["disabled", "left", "right", "center", "leftchamber", "rightchamber", "centerchamber"]
 // Include larger corner fillet
@@ -41,7 +41,7 @@ lip_style = "normal";  // [ "normal", "reduced", "none" ]
 module end_of_customizer_opts() {}
 
 // Separator positions are defined in terms of grid units from the left end
-separator_positions = [ 0.25, 0.5, 1.4 ];
+separator_positions = [ 0.66 ];
 
 if (filled_in) {
   grid_block(width, depth, height, magnet_diameter=magnet_diameter, 
