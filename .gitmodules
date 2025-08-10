@@ -6,3 +6,6 @@
 	path = downloads
 	url = https://github.com/miiiikeb/3dModelDownloads.git
 
+[submodule "0000_StdLibraries/gridfinity-rebuilt-openscad-fork"]
+	path = 0000_StdLibraries/gridfinity-rebuilt-openscad-fork
+	url = https://github.com/miiiikeb/gridfinity-rebuilt-openscad
