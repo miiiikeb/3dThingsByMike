@@ -2,6 +2,7 @@
 // EDIT OTHER FILES IN REPO FOR RESULTS
 
 include <gridfinity-constants.scad>
+include <gridfinity-miiiikeb-utils.scad>
 
 // ===== User Modules ===== //
 
