@@ -6,10 +6,11 @@ cnrR = 7.5;
 edgeChamfer = 1;
 escDepth = 5;
 
-snapR = 1;
-snapOS = 0.3;
+snapR = 1.5;
+snapOS = -0.1;
 hSnapLen = 30;
 hSnapOS = 65;
+snapZ = 3;
 
 lidDepth = 25;
 lidThickness = 3;
@@ -20,13 +21,25 @@ gripOS = -1;
 gripZOS = 10;
 gripRot = 10;
 
-module corners(xOS,yOS,topR,baseR,depth = escDepth){
+module corners(xOS,yOS,topR,baseR,depth = escDepth,baseOS = 0){
     for (x = [-xOS/2,xOS/2]){
-        for (y = [-yOS/2,yOS/2]){
+        for (y = [-yOS/2 - baseOS,yOS/2]){
             translate([x,y,0]) cylinder(h = depth, r1 = baseR, r2 = topR, $fn = baseR * 15);
         }
     }
 }
+
+module corner_fillet(xOS,yOS,topR,baseR,depth = escDepth, baseOS = 0){
+    topR_ =  topR + topR * (baseR - topR) / depth;
+    for (x = [-xOS/2,xOS/2]){
+        for (y = [-yOS/2 - baseOS,yOS/2]){
+            translate([x,y,0]) {
+                cylinder(h = depth - topR_, r1 = baseR, r2 = topR_, $fn = baseR * 15);
+                translate([0,0,depth - topR_]) sphere(r = topR_, $fn = baseR * 15);
+            }
+        }
+    }
+} 
 
 module bigVoid(depth=escDepth){
     module cornerChamfer(){
@@ -44,18 +57,18 @@ module bigVoid(depth=escDepth){
     }
 }
 
-module snapRidges(snapR = snapR,depth=escDepth, zScale = 1){
+module snapRidges(snapR = snapR,zOS=snapZ, scale = [1,1,1], baseOS = 0){
     for (x = [-1,1]){
         edgeOS = x * (snapOS + xOS / 2 + cnrR);
-        #hull() for (y = [-yOS/2,yOS/2]){
-            translate([edgeOS,y,depth/2]) scale([1,1,zScale]) sphere(r = snapR,$fn = 8);
+        #hull() for (y = [-yOS/2 - baseOS,yOS/2]){
+            translate([edgeOS,y,zOS]) scale(scale) rotate([0,-x * gripRot,0]) sphere(r = snapR,$fn = 8);
         }
     }
-    for (y = [-1,1]){
+    for (y = [1]){
         edgeOS = y * (snapOS + yOS / 2 + cnrR);
         for (hSOS = [-hSnapOS,0,hSnapOS]){
             #hull() for (x = [-hSnapLen/2,hSnapLen/2]){
-                translate([x + hSOS,edgeOS,depth/2]) scale([1,1,zScale]) sphere(r = snapR,$fn = 8);
+                translate([x + hSOS,edgeOS,zOS]) scale(scale) rotate([y * gripRot,0 ,0]) sphere(r = snapR,$fn = 8);
             }
         }
     }
@@ -80,18 +93,19 @@ module buildEscutcheon(){
 }
 
 
-//buildEscutcheon();
-translate([0,0,00]) rotate([0,180,0]) buildLid();
+buildEscutcheon();
+//translate([0,0,50]) rotate([0,180,0]) buildLid();
 
 
 module buildLid(){
     difference(){
         union(){
-            hull() corners(xOS,yOS,lidThickness + cnrR - ((lidDepth-escDepth + lidThickness)/escDepth)*edgeChamfer,cnrR + edgeChamfer + lidThickness,lidDepth + lidThickness);
+            hull() corners(xOS,yOS,lidThickness + cnrR - ((lidDepth-escDepth + lidThickness)/escDepth)*edgeChamfer,cnrR + edgeChamfer + lidThickness,lidDepth + lidThickness, baseOS = 20);
             gripRidges(gripR,lidDepth - gripZOS,1.5);
         } 
-        hull() corners(xOS,yOS,lidMargin + cnrR - ((lidDepth-escDepth)/escDepth)*edgeChamfer,lidMargin + cnrR + edgeChamfer,lidDepth);
-        snapRidges(snapR + snapMargin, escDepth,1.5);
+        hull() corner_fillet(xOS,yOS,lidMargin + cnrR - ((lidDepth-escDepth)/escDepth)*edgeChamfer,lidMargin + cnrR + edgeChamfer,lidDepth, baseOS = 20);
+        snapRidges(snapR + snapMargin, snapZ,[1.3,1,1.5], baseOS = 20);
+        translate([0,-500 -yOS / 2 - 15,0]) cube(size = 1000, center = true);
     }
 }
     
