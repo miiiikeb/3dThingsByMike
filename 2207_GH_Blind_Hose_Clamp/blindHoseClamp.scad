@@ -1,4 +1,4 @@
-include<mbLib-0.1.scad>;
+include <0000_StdLibraries/mine/mbLib.scad>;
 include<screwDims.conf>;
 
 res = 1;

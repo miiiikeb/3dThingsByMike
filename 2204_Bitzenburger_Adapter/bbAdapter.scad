@@ -1,4 +1,4 @@
-include<mbLib.scad>;
+include <0000_StdLibraries/mine/mbLib.scad>;
 
 res = 3;
 

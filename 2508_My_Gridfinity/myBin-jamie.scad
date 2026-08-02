@@ -1,5 +1,5 @@
-use <../0000_StdLibraries/BOSL2/std.scad>
-use <../0000_StdLibraries/Gridfinity/jamie/gridfinity_cup_modules.scad>
+use <0000_StdLibraries/vendor/BOSL2/std.scad>
+use <0000_StdLibraries/vendor/gridfinity-jamie/gridfinity_cup_modules.scad>
 
 // X dimension in grid units
 width = 1; // [ 0.5, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13 ]

@@ -1,5 +1,5 @@
-include <../0000_StdLibraries/mbLib.scad>
-//include <mbLib.scad>  //Uncomment to generate as standalone (not from github repo)
+include <0000_StdLibraries/mine/mbLib.scad>
+//include <0000_StdLibraries/mine/mbLib.scad>  //Uncomment to generate as standalone (not from github repo)
 
 res = 1;
 lil = 0.001;

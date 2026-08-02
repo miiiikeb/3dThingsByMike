@@ -1,5 +1,5 @@
-include <../0000_StdLibraries/BOSL2/std.scad>
-include <../0000_StdLibraries/BOSL2/hinges.scad>
+include <0000_StdLibraries/vendor/BOSL2/std.scad>
+include <0000_StdLibraries/vendor/BOSL2/hinges.scad>
 
 depth = 5;
 

@@ -1,4 +1,4 @@
-include<mblib.scad>;
+include <0000_StdLibraries/mine/mbLib.scad>;
 
 skin = 5;
 socD = 14;

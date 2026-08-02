@@ -1,4 +1,4 @@
-include <../0000_StdLibraries/mbLib.scad>;
+include <0000_StdLibraries/mine/mbLib.scad>;
 
 //Parameter Set 03
 tipR = 8.5;

@@ -27,6 +27,7 @@ https://github.com/kennetek/gridfinity-rebuilt-openscad
 include <0000_StdLibraries/vendor/gridfinity-rebuilt/src/core/standard.scad>
 use <0000_StdLibraries/vendor/gridfinity-rebuilt/src/core/gridfinity-rebuilt-utility.scad>
 use <0000_StdLibraries/vendor/gridfinity-rebuilt/src/core/gridfinity-rebuilt-holes.scad>
+include <0000_StdLibraries/mine/patterns.scad>
 
 // ===== PARAMETERS ===== //
 
@@ -40,7 +41,7 @@ gridx = 2;
 // number of bases along y-axis
 gridy = 1;
 // bin height. See bin height information and "gridz_define" below.
-gridz = 9; //.1
+gridz = 6; //.1
 // Half grid-sized bins.  Implies "only corners".
 half_grid = false;
 
@@ -107,7 +108,26 @@ grid_dimensions = GRID_DIMENSIONS_MM / (half_grid ? 2 : 1);
 
 // ===== IMPLEMENTATION ===== //
 
+//ScrewDriver Holder//
+gridfinityInit(gridx, gridy, height(gridz, gridz_define, style_lip, enable_zsnap), height_internal, grid_dimensions=grid_dimensions, sl=style_lip) {
+
+    cut_move(x=0, y=0, w=2, h=0.5)
+        pattern_linear(x=5, y=1, sx= (42/2.8), sy = (42/2.3)) 
+            cylinder(r=3.5/2, h=1000, center=true); 
+    cut_move(x=0, y=0.5, w=2, h=0.5)
+        pattern_linear(x=5, y=1, sx= (42/2.8), sy = (42/2.3)) 
+            cylinder(r=2.8/2, h=1000, center=true); 
+     cut_move(x=0, y=0, w=2, h=1)
+        pattern_linear(x=4, y=1, sx= (42/2.8), sy = (42/2.3)) 
+            cylinder(r=5.5/2, h=1000, center=true);    
+}
+
+gridfinityBase([gridx, gridy], grid_dimensions=grid_dimensions, hole_options=hole_options, only_corners=only_corners || half_grid, thumbscrew=enable_thumbscrew);
+
+
+
 //Basic Bin//
+/*
 gridfinityInit(gridx, gridy, height(gridz, gridz_define, style_lip, enable_zsnap), height_internal, grid_dimensions=grid_dimensions, sl=style_lip) {
 
     if (divx > 0 && divy > 0) {
@@ -121,6 +141,8 @@ gridfinityInit(gridx, gridy, height(gridz, gridz_define, style_lip, enable_zsnap
 }
 
 gridfinityBase([gridx, gridy], grid_dimensions=grid_dimensions, hole_options=hole_options, only_corners=only_corners || half_grid, thumbscrew=enable_thumbscrew);
+
+*/
 
 //Gauge Holder//
 /*

@@ -24,10 +24,9 @@ https://github.com/kennetek/gridfinity-rebuilt-openscad
 
 */
 
-include <0000_StdLibraries/vendor/gridfinity-rebuilt/src/core/standard.scad>
-use <0000_StdLibraries/vendor/gridfinity-rebuilt/src/core/gridfinity-rebuilt-utility.scad>
-use <0000_StdLibraries/vendor/gridfinity-rebuilt/src/core/gridfinity-rebuilt-holes.scad>
-include <0000_StdLibraries/mine/patterns.scad>
+include <src/core/standard.scad>
+use <src/core/gridfinity-rebuilt-utility.scad>
+use <src/core/gridfinity-rebuilt-holes.scad>
 
 // ===== PARAMETERS ===== //
 
@@ -109,7 +108,6 @@ grid_dimensions = GRID_DIMENSIONS_MM / (half_grid ? 2 : 1);
 // ===== IMPLEMENTATION ===== //
 
 //color("tomato") {
-/*
 gridfinityInit(gridx, gridy, height(gridz, gridz_define, style_lip, enable_zsnap), height_internal, grid_dimensions=grid_dimensions, sl=style_lip) {
 
     if (divx > 0 && divy > 0) {
@@ -123,7 +121,7 @@ gridfinityInit(gridx, gridy, height(gridz, gridz_define, style_lip, enable_zsnap
 }
 gridfinityBase([gridx, gridy], grid_dimensions=grid_dimensions, hole_options=hole_options, only_corners=only_corners || half_grid, thumbscrew=enable_thumbscrew);
 //}
-*/
+
 
 // ===== EXAMPLES ===== //
 
@@ -165,8 +163,8 @@ gridfinityBase(3, 3, 42, 0, 0, 1);
 */
 
 // Areas without a compartment are solid material, where you can put your own cutout shapes. using the cut_move() function, you can select an area, and any child shapes will be moved from the origin to the center of that area, and subtracted from the block. For example, a pattern of three cylinderical holes.
-
-gridfinityInit(3, 3, height(6), 0) {
+/*
+gridfinityInit(3, 3, height(6), 0, 42) {
     cut(x=0, y=0, w=2, h=3);
     cut(x=0, y=0, w=3, h=1, t=5);
     cut_move(x=2, y=1, w=1, h=2)
@@ -174,7 +172,7 @@ gridfinityInit(3, 3, height(6), 0) {
             cylinder(r=5, h=1000, center=true);
 }
 gridfinityBase([3, 3]);
-
+*/
 
 // You can use loops as well as the bin dimensions to make different parametric functions, such as this one, which divides the box into columns, with a small 1x1 top compartment and a long vertical compartment below
 /*

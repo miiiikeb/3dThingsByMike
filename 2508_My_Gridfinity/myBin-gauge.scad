@@ -1,5 +1,8 @@
-use <../0000_StdLibraries/BOSL2/std.scad>
-include <../0000_StdLibraries/Gridfinity/kennetek/gridfinity-rebuilt-utility.scad>
+use <0000_StdLibraries/vendor/BOSL2/std.scad>
+include <0000_StdLibraries/vendor/gridfinity-rebuilt/src/core/standard.scad>
+use <0000_StdLibraries/vendor/gridfinity-rebuilt/src/core/gridfinity-rebuilt-utility.scad>
+use <0000_StdLibraries/vendor/gridfinity-rebuilt/src/core/gridfinity-rebuilt-holes.scad>
+include <0000_StdLibraries/mine/patterns.scad>
 
 // ===== INFORMATION ===== //
 /*
@@ -49,8 +52,8 @@ divy = 1;
 enable_scoop = true;
 // snap gridz height to nearest 7mm increment
 enable_zsnap = false;
-// enable upper lip for stacking other bins
-enable_lip = true;
+// upper lip for stacking other bins
+style_lip = 0; //[0: Regular lip, 1: remove lip subtractively, 2: remove lip and retain height]
 
 /* [Other] */
 // determine what the variable "gridz" applies to based on your use case
@@ -73,7 +76,7 @@ div_base_y = 0;
 // ===== IMPLEMENTATION ===== //
 
 color("tomato") {
-gridfinityInit(gridx, gridy, height(gridz, gridz_define, enable_lip, enable_zsnap), height_internal, length) {
+gridfinityInit(gridx, gridy, height(gridz, gridz_define, style_lip, enable_zsnap), height_internal, sl=style_lip) {
     cut_move(x=1/3, y=1, w=2/3, h=2) 
         cube(size = [1.3, 20.3,1000], center = true);
     cut_move(x=0, y=0, w=2/3, h=2) 
@@ -86,7 +89,7 @@ gridfinityInit(gridx, gridy, height(gridz, gridz_define, enable_lip, enable_zsna
             //cylinder(r=5, h=1000, center=true);
     //cutEqual(n_divx = divx, n_divy = divy, style_tab = style_tab, enable_scoop = enable_scoop);
 }
-gridfinityBase(gridx, gridy, length, div_base_x, div_base_y, style_hole);
+gridfinityBase([gridx, gridy], hole_options=bundle_hole_options(magnet_hole=true, screw_hole=true, supportless=true));
 
 }
 

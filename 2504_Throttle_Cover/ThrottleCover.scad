@@ -1,7 +1,7 @@
 
 
-//include <BOSL2/screws.scad>
-//include <BOSL2/std.scad>
+//include <0000_StdLibraries/vendor/BOSL2/screws.scad>
+//include <0000_StdLibraries/vendor/BOSL2/std.scad>
 
 width1 = 130;
 width2 = 212; //210;

@@ -1,8 +1,8 @@
 // Version 1.00: Failed very quickly. Not strong enough.
 
 
-include <../0000_StdLibraries/BOSL2/std.scad>
-include <../0000_StdLibraries/BOSL2/screws.scad>
+include <0000_StdLibraries/vendor/BOSL2/std.scad>
+include <0000_StdLibraries/vendor/BOSL2/screws.scad>
 
 
 M10Cover = 4;

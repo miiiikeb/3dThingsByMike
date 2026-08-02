@@ -36,19 +36,19 @@ $fs = 0.25; // .01
 
 /* [General Settings] */
 // number of bases along x-axis
-gridx = 2;
+gridx = 1;
 // number of bases along y-axis
-gridy = 1;
+gridy = 2;
 // bin height. See bin height information and "gridz_define" below.
-gridz = 9; //.1
+gridz = 6; //.1
 // Half grid-sized bins.  Implies "only corners".
 half_grid = false;
 
 /* [Linear Compartments] */
 // number of X Divisions (set to zero to have a solid bin)
-divx = 4;
+divx = 0;
 // number of Y Divisions (set to zero to have solid bin)
-divy = 1;
+divy = 0;
 
 /* [Cylindrical Compartments] */
 // number of cylindrical X Divisions (mutually exclusive to Linear Compartments)
@@ -76,13 +76,13 @@ enable_zsnap = false;
 
 /* [Features] */
 // the type of tabs
-style_tab = 5; //[0:Full,1:Auto,2:Left,3:Center,4:Right,5:None]
+style_tab = 1; //[0:Full,1:Auto,2:Left,3:Center,4:Right,5:None]
 //Which divisions have tabs
 place_tab = 0; // [0:Everywhere-Normal,1:Top-Left Division]
 //How should the top lip act
 style_lip = 0; //[0: Regular lip, 1:remove lip subtractively, 2: remove lip and retain height]
 // scoop weight percentage. 0 disables scoop, 1 is regular scoop. Any real number will scale the scope.
-scoop = 0.5; //[0:0.1:1]
+scoop = 1; //[0:0.1:1]
 
 /* [Base Hole Options] */
 // only cut magnet/screw holes at the corners of the bin to save unnecessary print time
@@ -119,8 +119,6 @@ gridfinityInit(gridx, gridy, height(gridz, gridz_define, style_lip, enable_zsnap
         cutCylinders(n_divx=cdivx, n_divy=cdivy, cylinder_diameter=cd, cylinder_height=ch, coutout_depth=c_depth, orientation=c_orientation, chamfer=c_chamfer);
     }
 }
-
-gridfinityBase([gridx, gridy], grid_dimensions=grid_dimensions, hole_options=hole_options, only_corners=only_corners || half_grid, thumbscrew=enable_thumbscrew);
 
 //Gauge Holder//
 /*
