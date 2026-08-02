@@ -1,4 +1,3 @@
-use <0000_StdLibraries/vendor/BOSL2/std.scad>
 use <0000_StdLibraries/vendor/gridfinity-jamie/gridfinity_cup_modules.scad>
 
 // X dimension in grid units

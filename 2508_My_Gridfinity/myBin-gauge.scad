@@ -1,4 +1,3 @@
-use <0000_StdLibraries/vendor/BOSL2/std.scad>
 include <0000_StdLibraries/vendor/gridfinity-rebuilt/src/core/standard.scad>
 use <0000_StdLibraries/vendor/gridfinity-rebuilt/src/core/gridfinity-rebuilt-utility.scad>
 use <0000_StdLibraries/vendor/gridfinity-rebuilt/src/core/gridfinity-rebuilt-holes.scad>
