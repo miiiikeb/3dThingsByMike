@@ -4,35 +4,110 @@ A collection of original OpenSCAD designs for 3D printing. Each project lives in
 own folder and is independent of the others. Shared library code lives in
 `0000_StdLibraries`.
 
-## Setup
+## Setting up a new OpenSCAD instance
 
-Set `OPENSCADPATH` to the root of this repository. Every `include` and `use` in this
-repo is written relative to that root, so this is required — without it, includes fail.
+Four steps: install a development snapshot, clone this repo, point `OPENSCADPATH` at
+it, verify. Step 3 is not optional — every `include` and `use` in this repo is written
+relative to the repo root, so without it every design fails to find its libraries.
+
+### 1. Install a development snapshot, not the release
+
+Use a snapshot rather than release 2021.01. The snapshot defaults to the Manifold
+geometry engine; 2021.01 only has CGAL. On the models in this repo, measured on
+snapshot 2026.08.01:
+
+| Model | CGAL | Manifold |
+|---|---|---|
+| `2508_My_Gridfinity/myBin-kennetek-basic-bin.scad` | 11.5 s | 0.51 s |
+| `2508_My_Gridfinity/ScrewDriverHolder.scad` | 17.4 s | 0.42 s |
+| `2508_My_Gridfinity/gridfinity-rebuilt-bins.scad` | 48.1 s | 0.89 s |
+
+Snapshots install alongside the release rather than replacing it, so an existing
+2021.01 can stay put.
+
+**Windows.** Download the snapshot installer from the [downloads
+page](https://openscad.org/downloads.html) and run it. It lands in
+`C:\Program Files\OpenSCAD (Nightly)\` with two binaries: `openscad.exe` for the GUI
+and `openscad.com` for the command line.
+
+**Linux.** Any of:
 
 ```bash
-# Linux / macOS — add to ~/.bashrc or ~/.zshrc. Colon-separated; keep any existing entries.
+sudo snap install openscad-nightly            # simplest
+
+# or a portable AppImage — no install, no root
+#   grab the newest from https://files.openscad.org/snapshots/
+chmod +x OpenSCAD-*.AppImage && ./OpenSCAD-*.AppImage
+```
+
+There is also an OpenSCAD apt repository providing an `openscad-nightly` package that
+coexists with the distro release. It needs both a signing key and a source line, and
+the source line is distro-specific — take the current pair from the [downloads
+page](https://openscad.org/downloads.html) rather than copying one from here.
+
+Note that distro packages named plain `openscad` are usually 2021.01. Check with
+`openscad --version` before assuming which one you have.
+
+### 2. Clone the repository
+
+```bash
+git clone git@github.com:miiiikeb/3dThingsByMike.git
+cd 3dThingsByMike
+git submodule update --init      # optional, see below
+```
+
+Libraries are committed as plain files, so a plain clone renders every design with no
+submodule step. The only submodule is `downloads/`, a **private** repository — it will
+ask for credentials, and skipping it affects nothing else.
+
+### 3. Point OPENSCADPATH at the repo root
+
+**Windows.** Set it as a user environment variable. Prefer PowerShell over `setx`,
+which is easy to get wrong — quoting mistakes silently embed the quote characters in
+the value, and OpenSCAD then looks for a directory whose name contains them:
+
+```powershell
+[Environment]::SetEnvironmentVariable("OPENSCADPATH", "C:\path\to\3dThingsByMike", "User")
+
+# check it: should print the path in brackets with no stray quotes, then True
+$v = [Environment]::GetEnvironmentVariable("OPENSCADPATH","User"); "[$v]"; Test-Path $v
+```
+
+**Linux / macOS.** Add to `~/.bashrc` or `~/.zshrc`:
+
+```bash
 export OPENSCADPATH="$HOME/path/to/3dThingsByMike"
 ```
 
-```powershell
-# Windows — set once as a user environment variable. Semicolon-separated.
-setx OPENSCADPATH "C:\path\to\3dThingsByMike"
+Multiple roots are separated by `;` on Windows and `:` on Linux and macOS. Keep any
+existing entries.
+
+**Restart both the terminal and OpenSCAD.** Neither picks up the change in an
+already-running process.
+
+### 4. Verify
+
+From the repo root, render a design that pulls in both a vendored library and
+`mine/patterns.scad`:
+
+```bash
+# Linux / macOS
+openscad -o /tmp/check.stl 2508_My_Gridfinity/myBin-kennetek-basic-bin.scad
 ```
 
-### Use a development snapshot, with the Manifold backend
+```bat
+:: Windows — use openscad.com for console output, and an absolute -o path
+"C:\Program Files\OpenSCAD (Nightly)\openscad.com" -o %TEMP%\check.stl 2508_My_Gridfinity\myBin-kennetek-basic-bin.scad
+```
 
-Release 2021.01 renders these models with CGAL and is slow. A development snapshot
-with `--backend=Manifold` (Preferences → Advanced → 3D rendering on the GUI) is
-dramatically faster on the same geometry — measured on 2026.08.01:
+It must complete with **no `WARNING: Can't find include file`** lines — that warning is
+the signature of step 3 not having taken effect, usually because the process was started
+before the variable was set. On a snapshot this takes well under a second and ends with
+`Status: NoError`; on 2021.01 expect roughly ten seconds and CGAL's `Simple: yes`
+summary instead.
 
-| Model | CGAL | Manifold | Speed-up |
-|---|---|---|---|
-| `2508_My_Gridfinity/myBin-kennetek-basic-bin.scad` | 11.5 s | 0.51 s | 23× |
-| `2508_My_Gridfinity/ScrewDriverHolder.scad` | 17.4 s | 0.42 s | 41× |
-| `2508_My_Gridfinity/gridfinity-rebuilt-bins.scad` | 48.1 s | 0.89 s | 54× |
-
-Manifold also reports mesh validity (`Status`, `Genus`) after each render, which
-catches non-manifold geometry before it reaches the slicer.
+Three files in `1601_Coffee_Set` fail to parse — `CoffeeSet_0.2.scad`, `Funnel_1.0.scad`
+and `Stem_0.1.scad`. Those are known pre-existing syntax errors, not a setup problem.
 
 ### Windows plus WSL
 
@@ -40,24 +115,10 @@ The Windows build **cannot open files on the WSL filesystem.** Given a
 `\\wsl.localhost\...` path it rewrites it to a broken relative form, fails to resolve
 `OPENSCADPATH`, then aborts with `filesystem error: cannot set current path`. If you
 use the Windows GUI, keep the repository on a drive letter (`C:\...`) and reach it from
-WSL via `/mnt/c/...` — not the other way round.
+WSL via `/mnt/c/...` — not the other way round. A single clone on `C:` serves both.
 
-Note also that a development snapshot resolves a relative `-o` output path against the
-**input file's** directory, not the current directory. Pass an absolute output path in
-scripts.
-
-Then clone and open any `.scad` file directly:
-
-```bash
-git clone https://github.com/miiiikeb/3dThingsByMike.git
-cd 3dThingsByMike
-git submodule update --init      # optional: downloads/ only, see below
-```
-
-Libraries are committed as plain files, so a plain clone is enough to render every
-design. The only submodule is `downloads/`, which is a **private** repository — the
-clone will prompt for credentials if you ask for it, and skipping it affects nothing
-else.
+Also, a snapshot resolves a relative `-o` output path against the **input file's**
+directory, not the current directory. Pass an absolute output path in scripts.
 
 ## Project index
 
